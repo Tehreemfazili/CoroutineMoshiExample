@@ -6,11 +6,15 @@ import retrofit2.create
 
 class Repository{
 
-    fun retrofit() :ClientApi{
+    fun retrofit() :ClientApii{
        return Retrofit.Builder()
             .baseUrl("https://jsonplaceholder.typicode.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(ClientApi::class.java)
+            .create(ClientApii::class.java)
+    }
+
+    suspend fun fetchDetails() : List<Product>{
+        return retrofit().fetchDetails()
     }
 }
